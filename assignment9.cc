@@ -6,7 +6,7 @@
  Section: 1
  TA: 
  Date Due: May 02, 2018 
- Purpose: Built Graph ADT & depth_first using C++ 
+ Purpose: Build Graph ADT & depth_first using C++ 
  ************************************************************/
 
 #include <iostream>
@@ -14,19 +14,96 @@
 #include <vector>
 #include <list>
 #include "assignment9.h"
-using namespace std;
 
+/***************************************************************
+  
+ Name: depth_first
 
+ Use:  
 
+ Parameters: 
 
+ Returns:  
 
+ ***************************************************************/
+void graph::depth_first( int );
+{
+}
 
+/***************************************************************
+  
+ Name: graph
 
+ Use: Constructor 
 
+ Parameters: A filename 
 
+ Returns: None. 
 
+ ***************************************************************/
+graph::graph( const char* filename );
+{
+}
 
+/***************************************************************
+  
+ Name: ~graph 
 
+ Use: Destructor 
+
+ Parameters: None. 
+
+ Returns: None. 
+
+ ***************************************************************/
+graph::~graph();
+{
+}
+
+/***************************************************************
+  
+ Name: get_size 
+
+ Use: Returns the size of the graph object. 
+
+ Parameters: None.  
+
+ Returns: An integer. 
+
+ ***************************************************************/
+int graph::get_size() const;
+{
+}
+
+/***************************************************************
+  
+ Name: traverse 
+
+ Use:  
+
+ Parameters: None. 
+
+ Returns: None. 
+
+ ***************************************************************/
+void graph::traverse( ) ;
+{
+}
+
+/***************************************************************
+  
+ Name: print 
+
+ Use: Prints graph. 
+
+ Parameters: None. 
+
+ Returns: None. 
+
+ ***************************************************************/
+void graph::print ( ) const;
+{
+}
 
 #define ASSIGNMENT9_TEST
 #ifdef 	ASSIGNMENT9_TEST

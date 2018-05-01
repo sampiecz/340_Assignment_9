@@ -1,3 +1,13 @@
+/***********************************************************
+ CSCI 340 - Assignment 9 - Spring 2018
+ 
+ Progammer: Sam Piecz
+ Z-ID: Z1732715
+ Section: 1
+ TA: 
+ Date Due: May 02, 2018 
+ Purpose: Build Graph ADT & depth_first using C++ 
+ ************************************************************/
 #ifndef ASSIGNMENT9_H
 #define ASSIGNMENT9_H
 #include <vector>
