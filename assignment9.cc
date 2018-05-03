@@ -77,8 +77,8 @@ graph::graph( const char* filename )
             }
             else if (isdigit(line[i]))
             {
-                cout << "Edge: " << line[i] << endl;
                 edge_list.push_back(line[i]);
+                cout << "Edge: " << line[i] << endl;
             }
             
         }
@@ -168,9 +168,9 @@ void graph::depth_first( int var )
  ***************************************************************/
 void graph::print ( ) const
 {
-    for(auto& l : labels)
+    for(int i = 0; i < labels.size(); i++)
     {
-        cout << l << endl;
+        cout << labels[i] << endl;
     }
 
     for(auto& m : adj_list)
