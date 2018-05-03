@@ -13,29 +13,12 @@
 #include <fstream>
 #include <vector>
 #include <list>
+#include <string>
+#include <cctype>
 #include "assignment9.h"
 
-using std::ifstream;
-using std::vector;
-using std::cout;
-using std::cerr;
-using std::endl;
+using namespace std;
 
-/***************************************************************
-  
- Name: depth_first
-
- Use:  
-
- Parameters: 
-
- Returns:  
-
- ***************************************************************/
-void graph::depth_first( int );
-{
-    cout << "\nDFS\n" << endl;
-}
 
 /***************************************************************
   
@@ -48,47 +31,64 @@ void graph::depth_first( int );
  Returns: None. 
 
  ***************************************************************/
-graph::graph( const char* filename );
+graph::graph( const char* filename )
 {
     // Get the file as an ifstream object called infile
     ifstream infile(filename, ios::in);
     // Initialize string to hold each line of file
     string line;
 
-    // Initialize counter
+    // Start vector
+    vector<list<int>> adj_list;
+    vector<char> labels;
+
+    // Initialize counter for get line
     int counter = 0;
 
     // Loop through all lines while you can keep getting a line
     while (getline(infile, line))
     {
-        // if first iteration set size
         if (counter == 0)
         {
-            size = int(line);
+            size = stoi(line);
+            cout << "Size: " << size << endl;
+            counter++;
+            continue;
         }
-        // otherwise do something with labels
         else if (counter == 1)
         {
-            for (int index = 0; index < sizeof(line); index++)
-            {
-                labels.push_back(line[index]);
-            }
+            counter++;
+            continue;
         }
-        // if none of these things need to set index values to position
-        // inside main vector, sub the specific vertex
-        else
+
+        list<int> edge_list;
+        edge_list.resize(size);
+
+        for (int i = 0; i < line.size(); i++)
         {
-            for (int i = 0; i < sizeof(line); i++)
+            if(isspace(line[i]))
             {
-                cout << line[i] << endl;
+                continue;
             }
+            else if (isalpha(line[i]))
+            {
+                labels.push_back(line[i]);
+                cout << "Label: " << line[i] << endl;
+            }
+            else if (isdigit(line[i]))
+            {
+                cout << "Edge: " << line[i] << endl;
+                edge_list.push_back(line[i]);
+            }
+            
         }
+
+        // Add list to adj_list
+        adj_list.push_back(edge_list);
 
         // Increment counter 
         counter++;
     }
-
-    cout << size << endl;
 
 }
 
@@ -103,7 +103,7 @@ graph::graph( const char* filename );
  Returns: None. 
 
  ***************************************************************/
-graph::~graph();
+graph::~graph()
 {
 }
 
@@ -118,7 +118,7 @@ graph::~graph();
  Returns: An integer. 
 
  ***************************************************************/
-int graph::get_size() const;
+int graph::get_size() const
 {
     return size;
 }
@@ -134,9 +134,25 @@ int graph::get_size() const;
  Returns: None. 
 
  ***************************************************************/
-void graph::traverse( ) ;
+void graph::traverse( )
 {
     cout << "\nTraverse method\n" << endl;
+}
+
+/***************************************************************
+  
+ Name: depth_first
+
+ Use:  
+
+ Parameters: 
+
+ Returns:  
+
+ ***************************************************************/
+void graph::depth_first( int var )
+{
+    cout << "\nDFS" << endl;
 }
 
 /***************************************************************
@@ -150,11 +166,22 @@ void graph::traverse( ) ;
  Returns: None. 
 
  ***************************************************************/
-void graph::print ( ) const;
+void graph::print ( ) const
 {
-    cout << "\nPrint Method\n" << endl;
-}
+    for(auto& l : labels)
+    {
+        cout << l << endl;
+    }
 
+    for(auto& m : adj_list)
+    {
+        for(auto n : m )
+        { 
+            cout << n << endl;
+        }
+    }
+
+}
 
 
 #define ASSIGNMENT9_TEST
